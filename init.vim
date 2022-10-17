@@ -298,7 +298,6 @@ inoremap jh ===
 inoremap jw while () {}<left><CR><CR><up><up><esc>ela
 inoremap jz <esc>$a;
 
-
 " posibles letras de uso qf
 " * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
@@ -431,7 +430,7 @@ noremap <leader>q <C-w>W
 " ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
 " D O T    L A Y E R
-" (Normal only)
+"(Normal only)
 
 noremap . <nop>
 noremap .g :sav 
