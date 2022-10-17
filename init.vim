@@ -88,7 +88,6 @@ Plug 'neoclide/coc-snippets'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}  " Multicursor
 Plug 'sheerun/vim-polyglot'                          " Paquete de idiomas con resaltado
 
-" Plug 'Preservim/tagbar'
 call plug#end()
 
 "===========================================================
@@ -549,7 +548,7 @@ noremap <leader>gl :Git log<CR>
 " :Gread deshace cambios a último commit   :Gdiff visual de diferencias
 
 ":GV registros de git
-"
+
 " Gruvbox--------------------------------
 set termguicolors
 let g:gruvbox_contrast_dark = 'hard'
