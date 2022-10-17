@@ -294,6 +294,8 @@ inoremap jf function () {}<left><CR><CR><up><up><esc>ela
 inoremap jd () {}<left><CR><CR><up><up><esc>f(
 inoremap js {}<left><CR><CR><up>
 inoremap jx = [];<left><left>
+inoremap jh ===
+inoremap jw while () {}<left><CR><CR><up><up><esc>ela
 inoremap jz <esc>$a;
 
 
