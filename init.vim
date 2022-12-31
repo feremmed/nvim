@@ -1,4 +1,3 @@
-
 "NEO VIM
 
 "sets 
@@ -50,7 +49,7 @@ set completeopt-=preview
 
 "============================================================
 " Plugins
-call plug#begin('~/AppData/Local/nvim/plugged')
+call plug#begin('~/AppData/Local/nvim-data/site/autoload')
 " Git
 Plug 'tpope/vim-fugitive'                            " Git assistant
 Plug 'junegunn/gv.vim'                               " A git commit browser in Vim
@@ -81,9 +80,9 @@ Plug 'Yggdroot/indentLine'                           " Instert verticals lines o
 " Automatics
 Plug 'dyng/auto_mkdir'                               " Automatic make direction
 Plug '907th/vim-auto-save'                           " Automatic save files
-" COC Autocompletes
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc-snippets'
+" COC Autocomplete
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc-snippets'
 " Others
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}  " Multicursor
 Plug 'sheerun/vim-polyglot'                          " Paquete de idiomas con resaltado
@@ -107,18 +106,16 @@ inoremap HH <Esc>34h
 inoremap jj <Esc>j
 inoremap kk <Esc>k
 inoremap hh <Esc>h
-inoremap lll <Esc>l
+
 " La re mueven
-noremap zs gg
 noremap zz G
-noremap zn zt
+noremap zk zt
+noremap zj zb
 noremap zm zz
 " No la mueven (tampoco la M)
 noremap zh H
 noremap zl L
-" Mover entre líneas wrapeadas
-noremap <Up> gk
-noremap <Down> gj 
+
 " Mover contenido de línea arriba a abajo
 xnoremap <C-z> :move '>+1<CR>gv-gv
 xnoremap <C-s> :move '<-2<CR>gv-gv
@@ -132,23 +129,6 @@ inoremap <C-.> <esc>diwi<BS><esc>ea <esc>phi
 noremap <C-,> diwi<BS><esc>bhi <esc>ph
 noremap <C-.> diwi<BS><esc>ea <esc>ph
 
-" Tabaular
-vnoremap < <gv
-vnoremap > >gv
-" Movimiento de cursor en i
-inoremap qh <left>
-inoremap qj <esc><down>a
-inoremap qk <esc><up>a
-inoremap ql <right>
-" Movimiento de cursor de a seis líneas y columsas
-inoremap fhh <esc>hhhhhhi
-inoremap fj <esc>:+6<CR>a
-inoremap fk <esc>:-6<CR>a
-inoremap fll <esc>lllllla
-noremap fhh hhhhhh
-noremap fj :+6<CR>
-noremap fk :-6<CR>
-noremap fll llllll
 " Movimiento de pantalla de a una línea
 noremap <C-r> <C-y>
 inoremap <C-r> <esc><C-y>a
@@ -162,22 +142,35 @@ noremap <C-c> <C-f>
 noremap <C-v> <C-b>
 inoremap <C-c> <esc><C-f>a
 inoremap <C-v> <esc><C-b>a
+
+" Tabaular
+vnoremap < <gv
+vnoremap > >gv
 " Search
 noremap n nzzzv
 noremap N Nzzzv
 noremap <silent><space> :nohl<CR>
 
 " Out
-noremap qq <esc>
-inoremap qq <esc>
-xnoremap qq <esc>
-tnoremap qq <C-\><C-n>
 noremap ff a
 inoremap ff <esc>
 xnoremap ff <esc>
 tnoremap ff <C-\><C-n>
 tnoremap <esc> <C-\><C-n>
-
+" move between windows
+noremap q <nop>
+noremap qh <C-w>h
+noremap ql <C-w>l
+noremap qj <C-w>j
+noremap qk <C-w>k
+noremap qf <C-w>w
+noremap qq <C-w>W
+inoremap qh <esc><C-w>h
+inoremap ql <esc><C-w>l
+inoremap qj <esc><C-w>j
+inoremap qk <esc><C-w>k
+inoremap qf <esc><C-w>w
+inoremap qq <esc><C-w>W
 " select
 noremap vs V
 noremap vl <esc>v
@@ -201,6 +194,7 @@ inoremap vn <esc>vT
 inoremap vm <esc>vt
 inoremap vg <esc>vgg
 inoremap vz <esc>vG
+inoremap vs <esc>V
 xnoremap s V
 xnoremap v v^vg_
 xnoremap c y
@@ -239,7 +233,6 @@ noremap dzz dG
 noremap daa ggVGx
 noremap dx a<BS><Delete><esc>
 inoremap dx <BS><Delete>
-inoremap dl <delete> 
 inoremap dw <esc>ciw
 inoremap df <esc>ld$a
 inoremap dc <esc>d0i
@@ -261,6 +254,7 @@ noremap <BS> a<BS><esc>
 noremap <C-h> a<BS><esc>
 noremap <TAB> :bnext<CR>
 noremap <S-TAB> :bprev<CR>
+noremap <space><TAB> :bprev<CR>
 
 " Numbers
 inoremap xn 0
@@ -271,7 +265,7 @@ inoremap xj 4
 inoremap xk 5
 inoremap xl 6
 inoremap xu 7
-inoremap xi 8
+inoremap xii 8
 inoremap xo 9
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -295,7 +289,7 @@ inoremap js {}<left><CR><CR><up>
 inoremap jx = [];<left><left>
 inoremap jh ===
 inoremap jw while () {}<left><CR><CR><up><up><esc>ela
-inoremap jz <esc>$a;
+inoremap jz <esc>$a;<cr>
 
 " posibles letras de uso qf
 " * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -364,7 +358,7 @@ inoremap ;y <esc>yy46pi
 inoremap ;h <esc>yy16pi
 inoremap ;n <esc>yy06pi
 
-" Insert: b  (mapear ;'jk' entorpecen en JS)
+" Insert: b  (mapear ;j,k  entorpecen en JS)
 " Normal: q;'
 
 " ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
@@ -405,23 +399,11 @@ inoremap ,o °
 inoremap ,` ~
 inoremap ,/ ¿
 
-" move between windows
-noremap ,h <C-w>h
-noremap ,l <C-w>l
-noremap ,j <C-w>j
-noremap ,k <C-w>k
-noremap <leader><TAB> <C-w>w
-noremap <leader>q <C-w>W
-
-"<C-w>r/x transpola
-"<C-w>o cierra tadas menos la posicionada
-"<C-w>p salta entre verticales
-"<C-w>s abre otro ventana igaual
-"<C-w>q/c close actual
-"<C-w>t top
-"<C-w>b below
-"<C-w>v crea vertical windo
-"<C-w>n crea horizontal window
+" Movimiento de cursor en i
+inoremap ,h <left>
+inoremap ,j <esc><down>a
+inoremap ,k <esc><up>a
+inoremap ,l <right>
 
 " Insert: i;'
 " Normal: ertpyuiahjklbnm WSGYVAHJKLNVBM 1457890-=
@@ -466,10 +448,10 @@ noremap <leader>ae :e E:/eproj<CR>
 noremap <leader>ac :e ~/cproj<CR>
 noremap <leader>am :e C:/Users/DELL<CR>
 noremap <leader>ad :e ~/myDocs<CR>
-noremap <leader>as :e ~/myDocs/Scripts.ahk<CR>
-noremap <leader>af :e ~/myDocs/diagram.txt<CR>
-noremap <leader>ag :e ~/myDocs/comaGral.md<CR>
 noremap <leader>aa :e ~/myDocs/adminter.md<CR>
+noremap <leader>as :e ~/myDocs/Scripts.ahk<CR>
+noremap <leader>ag :e ~/myDocs/comaGral.md<CR>
+noremap <leader>af :e ~/Desktop<CR>
 noremap <leader>aj :e ~/cproj/JS<CR>
 
 " <leader> uiopvbm;'-=13456879 ||  + !%*QRTYUIOPSGZXCVBNM
@@ -532,22 +514,19 @@ noremap <C-ScrollWheelDown> :call AdjustFontSize(-1)<CR>
 inoremap <C-ScrollWheelUp> <Esc>:call AdjustFontSize(1)<CR>a
 inoremap <C-ScrollWheelDown> <Esc>:call AdjustFontSize(-1)<CR>a
 
-" ^-^  ^o^  ^.^  ^=^  ^*^  ^@^  ^L^  ^u^  ^b^  ^y^  ^l^  ^u^  ^b^  ^i^  ^ ^  ^w^
+
+
+
+
+
+
+" ===============================================================================================
+" |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+" ===============================================================================================
+
 
 " P L U G    C O N F I G U R A T I O N
 
-" Fugiteve --------------------------------------
-noremap <leader>gi :Git init<CR>
-noremap <leader>go :Git clone<CR>
-noremap <leader>gg :Git status<CR>
-noremap <leader>gh :Gwrite<CR>
-noremap <leader>gj :Git commit -m ''<left>
-noremap <leader>gk :Git push<CR>
-noremap <leader>gm :Git push origin master<CR>
-noremap <leader>gl :Git log<CR>
-" :Gread deshace cambios a último commit   :Gdiff visual de diferencias
-
-":GV registros de git
 
 " Gruvbox--------------------------------
 set termguicolors
@@ -565,6 +544,35 @@ let g:NERDTreeSyntaxDisableDefaultExactMatches = 1
 let g:NERDTreeSyntaxDisableDefaultPatternMatches = 0
 let g:NERDTreeSyntaxEnabledExtensions = ['c', 'h', 'py', 'js', 'css', 'html'] " enabled extensions with default colors
 let g:NERDTreeSyntaxEnabledExactMatches = ['node_modules', 'favicon.ico'] " enabled exact matches with default colors
+
+" Airline --------------------------------
+let g:airline_theme='kalisi'
+let g:airline_powerline_fonts = 1
+
+" Rainbow --------------------------------------
+let g:rainbow_active = 1
+
+" AutoSave --------------------------------
+let g:auto_save = 1          " enable AutoSave on Vim startup
+
+" Multicursor --------------------------------
+" <,z> baja (AutoHotKey)
+map <F3> <C-down>
+" <,x> sube (AutoHotKey)
+map <F4> <C-up>
+
+" Fugiteve --------------------------------------
+noremap <leader>gi :Git init<CR>
+noremap <leader>go :Git clone<CR>
+noremap <leader>gg :Git status<CR>
+noremap <leader>gh :Gwrite<CR>
+noremap <leader>gj :Git commit -m ''<left>
+noremap <leader>gk :Git push<CR>
+noremap <leader>gm :Git push origin master<CR>
+noremap <leader>gl :Git log<CR>
+" :Gread deshace cambios a último commit   :Gdiff visual de diferencias
+
+":GV registros de git
 
 " Floaterm --------------------------------------
 let g:floaterm_autoclose = 0
@@ -595,6 +603,11 @@ let g:executor_jump =
 " map: fl -> file list
 " map: fo -> file open from current directory
 " map: fr -> file rename(curre buffer) like tmux
+
+" map: cd -> change directory
+" map: fi -> file identifier
+" map: fs -> find string in all files in current directory
+
 let g:executor_file_mapping =
       \ get(g:, 'executor_file_mapping', 1)
 " 0 = deactivate 1 = <ESC> 2 = <ESC><ESC>
@@ -612,8 +625,6 @@ let g:executor_debugger_flags_python =
 
 let g:executor_program_args_python =
       \ get(g:, 'executor_program_args_python', '')
-
-" < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < <
 
 " Fuzzy finder -----------------------------
 nnoremap <leader>fe :Files E:/eproj/<CR>
@@ -642,107 +653,6 @@ nnoremap <Leader>ce :Ack! --py  E:/eproj/<left><left><left><left><left><left><le
 nnoremap <Leader>cc :Ack! --py  C:/Users/DELL/cproj/<left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left>
 nnoremap <Leader>cd :Ack! --py  C:/Users/DELL/myDocs/<left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left>
 
-" Airline --------------------------------
-let g:airline_theme='kalisi'
-let g:airline_powerline_fonts = 1
-" List: Cobalt2, deus, distinguished, minimalist, violet, fruit punch, angr, badwolf, base16, beheilt, bubblegum, dark,
-" durant, hybridline, hybrid, jellybeans, kalisi, kolor, leaderon, light, lucius, luna, molokai, monochrome, murmur, papercolor,
-" powerlineish, raven, serene, silver, simple, solarized, sol, term, tomorrow, ubaryd, understated, wombat, zenburn
-
-" Rainbow --------------------------------------
-let g:rainbow_active = 1
-
-" AutoSave --------------------------------
-let g:auto_save = 1          " enable AutoSave on Vim startup
-
-" COC --------------------------------------
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-
-" COC Snippets --------------------------------
-nmap <leader>v :CocCommand snippets.editSnippets<CR>
-"
-" Use <C-l> for trigger snippet expand.
-imap <C-l> <Plug>(coc-snippets-expand)
-
-" Use <C-j> for select text for visual placeholder of snippet.
-vmap <C-j> <Plug>(coc-snippets-select)
-
-" Use <C-j> for jump to next placeholder, it's default of coc.nvim
-let g:coc_snippet_next = '<c-j>'
-
-" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-let g:coc_snippet_prev = '<c-k>'
-
-" Use <C-j> for both expand and jump (make expand higher priority.)
-imap <C-j> <Plug>(coc-snippets-expand-jump)
-
-" Use <leader>x for convert visual selected code to snippet
-xmap <leader>2 <Plug>(coc-convert-snippet)
-
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? coc#_select_confirm() :
-"       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ coc#refresh()
-" 
-" function! s:check_back_space() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1]  =~# '\s'
-" endfunction
-" 
-" let g:coc_snippet_next = '<tab>'
-
-" if has('pythonx')
-"   echo 'pyx* commands are available. (Python ' .. &pyx .. ')'
-" endif
-
-"snippets.ultisnips.enable": false
-
-" Multicursor --------------------------------
-" <,z> baja (AutoHotKey)
-map <F3> <C-down>
-" <,x> sube (AutoHotKey)
-map <F4> <C-up>
-
-" Polyglot --------------------------------
-
-" Plug 'tpope/vim-dispatch'
-" if has('nvim')
-"   " Adds neovim support to vim-dispatch
-"   Plug 'radenling/vim-dispatch-neovim'
-" endif
-" Plug 'aliev/vim-python'
-" let g:python_compiler_fixqflist = 1
-" Plug 'vim-python/python-syntax'
-" let g:python_highlight_all = 1
-" Plug 'Vimjas/vim-python-pep8-indent'
-" let g:python_pep8_indent_hang_closing = 1
-
-
-
-
-" ♡ ♢ ♤ ♧ ♣ ♦ ♥ ♠ √ ∛ ∜↕ ↖ ↗ ↘ ↙  ↰ ↱ ↲ ↳ ↴ ↶ ↷ ↸ ↹ ↺ ↻  ⇅ ⇆ ⇇ ⇈ ⇉ ⇊  ⇜ ⇝  ⏎  ▶
-" ⤴ ⤵ ↓ ↔ ← → ↑ˍ ∎ ⊞ ⊟ ⊠ ⊡▐ ░ ▒ ▓ ▔ ■ □ ▢ ▣ ▤ ▥ ▩ ▪ ▫ ▬ ▭ ▮ ▯ ▰ ▱ ► ◄ ◈ ◘ ◙ ◚ ◛
-" ◢ ◣ ◤ ◥ ◧ ◨ ◩ ◪ ◫ ❘ ❙ ◊ ∆  ▶ ▷  ► ▼ ◀ ◁ ◅ ` ˊ ᐟ ‐ ‑ ‒ ― ⁃ ≣ ⋐ ⋑ ⋒ ⋓ ⌜ ⌝ ⌞ ⌟ ┃
-" ┅ ┆ ┇ ┊ ┋ ┏ ┐  ┗ ┘ ┛ ┣ ┤ ┳ ┴ ╋ ╌ ╎ ╏ ═ ║ ╭ ╮ ╯ ╰ ╱ ╲ ╳ ◜ ◝ ◞ ◟ ◠ ◡ ≡ ⌈ ⌊ — ⌉
-" ⌋ ○ ◌ ¼ ½ ¾ ⅐ ⅑ ⅒ ⅓ ⅔ ⅕ ⅖ ⅗ ⅘ ⅙ ⅚ ⅛ ⅜ ⅝ ⅞ ⅟ ↉ ∟ ∭ ﹢ ﹣ ﹤ ﹥ ％ ＋ － ／ ＝
-" ∩  ° ÷ ≡ ≥ ∞ ∫ ≤ ≠  ‰ ‱  π ± √ ∑ ∴ ×¹ ² ³ ° ⁰ ⁱ ⁴ ⁵ ⁶ ⁷ ⁸ ⁹ ⁺ ⁻ ⁼ ⁽ ⁾ ⁿ ₀ ₁ ₂
-" ₃ ₄ ₅ ₆ ₇ ₈ ₉ ₊ ₋ ₌ ₍ ₎ ₐ ₑ ₒ ₓ ₔα β χ δ ε η γ ι κ λ μ ν ω ο φ π ψ ρ σ τ θ υ
-" ξ ζ ˙ ‥ ‧ ‵ ‵ ❛ ❜   、 。 〃 「 」 『 』 〝 〞 ︰ ︰ ﹁ ﹂ ﹃ ﹄ ﹐ ﹒ ﹔ ﹔
-" ﹕！ ＃ ＄ ％ ＆ ＊ ， ． ： ； ？ ＠ ～ • … ¿ “ ‘ · ′ ” ’ 〈 〉 《 》 「 」
-" 『 』 【 】 〔 〕 ︵ ︶ ︷ ︸ ︹ ︺ ︻ ︼  ︽ ︾ ︿ ﹀ ﹁ ﹂ ﹃ ﹄ ﹙ ﹙ ﹚
-"﹛ ﹜ ﹝ ﹞ ﹤ ﹥ （ ） ＜ ＞ ｛ ｛ ｝₮ ৲ ৳ ௹ ฿ ៛ ₠ ₡ ₢ ₣ ₤ ₥ ₦ ₧ ₨ ₩ ₪ ₫ ₭ ₯
-"₰ ₱ ₲ ₳ ₴ ₵ ￥ ﷼ ¢ ¤ € ƒ £ ¥   ᴴᴰ § ¶ ♈ ♉ ♊ ♋ ♌ ♍ ♎ ♏ ♐ ♑ ♒ ♓
 
 
 
