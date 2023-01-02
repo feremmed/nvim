@@ -81,8 +81,7 @@ Plug 'Yggdroot/indentLine'                           " Instert verticals lines o
 Plug 'dyng/auto_mkdir'                               " Automatic make direction
 Plug '907th/vim-auto-save'                           " Automatic save files
 " COC Autocomplete
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'neoclide/coc-snippets'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Others
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}  " Multicursor
 Plug 'sheerun/vim-polyglot'                          " Paquete de idiomas con resaltado
@@ -157,6 +156,8 @@ inoremap ff <esc>
 xnoremap ff <esc>
 tnoremap ff <C-\><C-n>
 tnoremap <esc> <C-\><C-n>
+
+
 " move between windows
 noremap q <nop>
 noremap qh <C-w>h
@@ -171,6 +172,7 @@ inoremap qj <esc><C-w>j
 inoremap qk <esc><C-w>k
 inoremap qf <esc><C-w>w
 inoremap qq <esc><C-w>W
+
 " select
 noremap vs V
 noremap vl <esc>v
@@ -279,6 +281,8 @@ inoremap mr range()<left>
 inoremap mq append()<left>
 inoremap mh list()<left>
 inoremap mz <esc>$a:<cr>
+inoremap mr True
+inoremap mf False
 "enumerate, int, iter
 
 " JS
@@ -287,12 +291,23 @@ inoremap jf function () {}<left><CR><CR><up><up><esc>ela
 inoremap jd () {}<left><CR><CR><up><up><esc>f(
 inoremap js {}<left><CR><CR><up>
 inoremap jx = [];<left><left>
-inoremap jh ===
 inoremap jw while () {}<left><CR><CR><up><up><esc>ela
 inoremap jz <esc>$a;<cr>
+inoremap jt ===
+inoremap jr return
+
+" writing
+inoremap kr true
+inoremap kf false
+inoremap kt ==
 
 " posibles letras de uso qf
+
+
+
+
 " * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
 
 " S E M I C O L O N   L A Y E R
 
@@ -358,7 +373,7 @@ inoremap ;y <esc>yy46pi
 inoremap ;h <esc>yy16pi
 inoremap ;n <esc>yy06pi
 
-" Insert: b  (mapear ;j,k  entorpecen en JS)
+" Insert: b  (mapear ;jk  entorpecen en JS)
 " Normal: q;'
 
 " ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
@@ -653,6 +668,17 @@ nnoremap <Leader>ce :Ack! --py  E:/eproj/<left><left><left><left><left><left><le
 nnoremap <Leader>cc :Ack! --py  C:/Users/DELL/cproj/<left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left>
 nnoremap <Leader>cd :Ack! --py  C:/Users/DELL/myDocs/<left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left>
 
+" COC --------------------------------------
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 
 
