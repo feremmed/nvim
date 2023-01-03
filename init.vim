@@ -99,9 +99,9 @@ noremap J 12j
 noremap K 12k
 noremap H 12h
 noremap L 12l
-inoremap JJ <Esc>18j
-inoremap KK <Esc>18k
-inoremap HH <Esc>34h
+"inoremap JJ <Esc>18j
+"inoremap KK <Esc>18k
+"inoremap HH <Esc>34h
 inoremap jj <Esc>j
 inoremap kk <Esc>k
 inoremap hh <Esc>h
@@ -123,10 +123,10 @@ inoremap <C-s> <Esc>:m .-2<CR>==gi
 noremap <C-s> :m .-2<CR>
 noremap <C-z> :m .+1<CR>
 " Mover palabra dentro de la línea
-inoremap <C-,> <esc>diwi<BS><esc>bhi <esc>phi
-inoremap <C-.> <esc>diwi<BS><esc>ea <esc>phi
-noremap <C-,> diwi<BS><esc>bhi <esc>ph
-noremap <C-.> diwi<BS><esc>ea <esc>ph
+inoremap <C-n> <esc>diwi<BS><esc>bhi <esc>phi
+inoremap <C-m> <esc>diwi<BS><esc>ea <esc>phi
+noremap <C-n> diwi<BS><esc>bhi <esc>ph
+noremap <C-m> diwi<BS><esc>ea <esc>ph
 
 " Movimiento de pantalla de a una línea
 noremap <C-r> <C-y>
@@ -142,9 +142,26 @@ noremap <C-v> <C-b>
 inoremap <C-c> <esc><C-f>a
 inoremap <C-v> <esc><C-b>a
 
+inoremap <C-h> <left>
+inoremap <C-j> <down>
+inoremap <C-k> <up>
+inoremap <C-l> <right>
+
 " Tabaular
-vnoremap < <gv
-vnoremap > >gv
+inoremap <C-,> <C-d>
+inoremap <C-.> <C-t>
+nnoremap <C-,> <<
+nnoremap <C-.> >>
+xnoremap <C-,> <gv
+xnoremap <C-.> >gv
+
+" Normal: 1234567890-=qwtyuiop[]\aghjkl;'xb/
+" Insert: 1234567890-=qtyuop[]\ag;'xb/
+
+
+
+
+
 " Search
 noremap n nzzzv
 noremap N Nzzzv
@@ -172,6 +189,41 @@ inoremap qj <esc><C-w>j
 inoremap qk <esc><C-w>k
 inoremap qf <esc><C-w>w
 inoremap qq <esc><C-w>W
+
+
+inoremap <A-n> 0
+inoremap <A-m> 1
+inoremap <A-,> 2
+inoremap <A-.> 3
+inoremap <A-j> 4
+inoremap <A-k> 5
+inoremap <A-l> 6
+inoremap <A-u> 7
+inoremap <A-i> 8
+inoremap <A-o> 9
+
+inoremap <A-r> <BS>
+
+noremap <A-r> X
+noremap <A-e> i<CR><esc>
+
+noremap <A-d> dd
+noremap <A-s> p
+noremap <A-a> cc<esc>
+noremap <A-c> yy
+noremap <A-v> v
+inoremap <A-d> <esc>dda
+inoremap <A-s> <esc>pi
+inoremap <A-a> <esc>cc
+inoremap <A-c> <esc>yya
+inoremap <A-v> <esc>v
+
+" Alt
+" Normal: 1234890-=qweyuiop[]\fghjkl;'zxbnm,./
+" Insert: 1234890-=qweyp[]\fgh;'zxbnm,./
+" 567t
+
+
 
 " select
 noremap vs V
@@ -251,24 +303,18 @@ inoremap sx <esc>xpi
 " Others
 nnoremap U <C-r>
 inoremap xx <Delete>
+inoremap xh <BS>
 noremap <CR> i<CR><esc>
 noremap <BS> a<BS><esc>
-noremap <C-h> a<BS><esc>
 noremap <TAB> :bnext<CR>
 noremap <S-TAB> :bprev<CR>
 noremap <space><TAB> :bprev<CR>
 
-" Numbers
-inoremap xn 0
-inoremap xm 1
-inoremap x, 2
-inoremap x. 3
-inoremap xj 4
-inoremap xk 5
-inoremap xl 6
-inoremap xu 7
-inoremap xii 8
-inoremap xo 9
+
+
+
+
+
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 " L A N G U A G E S
@@ -283,8 +329,7 @@ inoremap mh list()<left>
 inoremap mz <esc>$a:<cr>
 inoremap mr True
 inoremap mf False
-"enumerate, int, iter
-
+"enumerate, int, it
 " JS
 inoremap jc console.log()<left>
 inoremap jf function () {}<left><CR><CR><up><up><esc>ela
@@ -292,7 +337,7 @@ inoremap jd () {}<left><CR><CR><up><up><esc>f(
 inoremap js {}<left><CR><CR><up>
 inoremap jx = [];<left><left>
 inoremap jw while () {}<left><CR><CR><up><up><esc>ela
-inoremap jz <esc>$a;<cr>
+inoremap jz <esc>$a;
 inoremap jt ===
 inoremap jr return
 
@@ -302,6 +347,8 @@ inoremap kf false
 inoremap kt ==
 
 " posibles letras de uso qf
+
+
 
 
 
@@ -318,45 +365,36 @@ inoremap ;3 #
 inoremap ;4 $
 inoremap ;5 %
 inoremap ;q !
-
-noremap ;d dd
-noremap ;s p
-noremap ;a cc<esc>
-noremap ;c yy
-inoremap ;d <esc>dda
-inoremap ;s <esc>pa
-inoremap ;a <esc>cc
-inoremap ;v <esc>v
-inoremap ;c <esc>yya
+inoremap ;a &
 
 inoremap ;r []<left>
 inoremap ;e ]
 inoremap ;w [
 inoremap ;f ()<left>
-inoremap ;x )
-inoremap ;z (
-inoremap ;u {}<left>
-inoremap ;i {
-inoremap ;o }
+inoremap ;d )
+inoremap ;s (
+inoremap ;c {}<left>
+inoremap ;x {
+inoremap ;z }
 inoremap ;m <><left>
-inoremap ;l ""<left>
 inoremap ;g ''<left>
+inoremap ;u ""<left>
 
 noremap ;r i[]<esc>
 noremap ;e bi[<esc>ea]<esc>
 noremap ;w 0i[<esc>$a]<esc>
 noremap ;f i()<esc>
-noremap ;x bi(<esc>ea)<esc>
-noremap ;z 0i(<esc>$a)<esc>
-noremap ;u i{}<esc>
-noremap ;i bi{<esc>ea}<esc>
-noremap ;o 0i{<esc>$a}<esc>
+noremap ;d bi(<esc>ea)<esc>
+noremap ;s 0i(<esc>$a)<esc>
+noremap ;c i{}<esc>
+noremap ;x bi{<esc>ea}<esc>
+noremap ;z 0i{<esc>$a}<esc>
 noremap ;m i<><esc>
 noremap ;, bi<<esc>ea><esc>
 noremap ;. 0i<<esc>$a><esc>
-noremap ;l i""<esc>
-noremap ;; bi"<esc>ea"<esc>
-noremap ;' 0i"<esc>$a"<esc>
+noremap ;u i""<esc>
+noremap ;i bi"<esc>ea"<esc>
+noremap ;o 0i"<esc>$a"<esc>
 noremap ;g i''<esc>
 noremap ;v bi'<esc>ea'<esc>
 noremap ;b 0i'<esc>$a'<esc>
@@ -373,8 +411,8 @@ inoremap ;y <esc>yy46pi
 inoremap ;h <esc>yy16pi
 inoremap ;n <esc>yy06pi
 
-" Insert: b  (mapear ;jk  entorpecen en JS)
-" Normal: q;'
+" Insert: b;'  (mapear ;jk  entorpecen en JS)
+" Normal: aq;'
 
 " ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
@@ -382,12 +420,11 @@ inoremap ;n <esc>yy06pi
 "q z x m in AutoHotKey
 
 " Desde el archivo copia
-noremap ,6 ggjdG<C-w><C-w>ggVGy<C-o>zt<C-w><C-w>p:w!<CR>
+noremap ,ii ggjdG<C-w><C-w>ggVGy<C-o>zt<C-w><C-w>p:w!<CR>
 noremap ,, o<esc>
 inoremap ,, <esc>o
 noremap ,. O<esc>
 inoremap ,. <esc>O
-inoremap ,a <right>
 inoremap ,d <esc>ciw
 noremap ,d diw
 inoremap ,w <Esc>lwha
@@ -402,6 +439,7 @@ inoremap ,v <esc>_i
 noremap ,v _
 noremap ,s :w!<CR>
 
+
 " whrite with comma layer
 inoremap ,s +
 inoremap ,r -
@@ -409,7 +447,7 @@ inoremap ,m *
 inoremap ,t =
 inoremap ,g _
 inoremap ,p %
-inoremap ,y &
+inoremap ,a &
 inoremap ,o °
 inoremap ,` ~
 inoremap ,/ ¿
@@ -420,7 +458,7 @@ inoremap ,j <esc><down>a
 inoremap ,k <esc><up>a
 inoremap ,l <right>
 
-" Insert: i;'
+" Insert: ;'
 " Normal: ertpyuiahjklbnm WSGYVAHJKLNVBM 1457890-=
 
 " ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
@@ -443,7 +481,7 @@ noremap .c :exe "vertical resize " . (winwidth(0) * 4/5)<CR>
 noremap .j :sp<CR>
 noremap .m :exe " resize " . (winheight(0) * 3/2)<CR>
 noremap .n :exe " resize " . (winheight(0) * 2/3)<CR>
-noremap .s :source %<CR>
+noremap .s :source ~/AppData/Local/nvim/init.vim<CR>
 noremap .d :bdelete!<CR>
 noremap .x :lclose<bar>b#<bar>bd #<CR>
 noremap .q :q<CR>
@@ -661,8 +699,8 @@ autocmd  FileType fzf set laststatus=0 noshowmode noruler
 cnoreabbrev Ack Ack!
 let g:ackprg = "ag --vimgrep"
 let g:ackhighlight = 1
-nnoremap <C-j> :cnext<CR>
-nnoremap <C-k> :cprevious<CR>
+" nnoremap <C-j> :cnext<CR>
+" nnoremap <C-k> :cprevious<CR>
 nnoremap <Leader>cp :Ack! --py 
 nnoremap <Leader>ce :Ack! --py  E:/eproj/<left><left><left><left><left><left><left><left><left><left>
 nnoremap <Leader>cc :Ack! --py  C:/Users/DELL/cproj/<left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left>
