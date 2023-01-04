@@ -89,44 +89,28 @@ Plug 'sheerun/vim-polyglot'                          " Paquete de idiomas con re
 call plug#end()
 
 "===========================================================
+
+
+
+
 " VANILA NVIM
+" -----------
 
-" L E T T E R   &   O T H E R S   L A Y E R
 
-" Movement
-" como chi o como no
-noremap J 12j
-noremap K 12k
-noremap H 12h
-noremap L 12l
-"inoremap JJ <Esc>18j
-"inoremap KK <Esc>18k
-"inoremap HH <Esc>34h
-inoremap jj <Esc>j
-inoremap kk <Esc>k
-inoremap hh <Esc>h
-
-" La re mueven
-noremap zz G
-noremap zk zt
-noremap zj zb
-noremap zm zz
-" No la mueven (tampoco la M)
-noremap zh H
-noremap zl L
+" CONTROL
 
 " Mover contenido de línea arriba a abajo
-xnoremap <C-z> :move '>+1<CR>gv-gv
-xnoremap <C-s> :move '<-2<CR>gv-gv
-inoremap <C-z> <Esc>:m .+1<CR>==gi
-inoremap <C-s> <Esc>:m .-2<CR>==gi
-noremap <C-s> :m .-2<CR>
-noremap <C-z> :m .+1<CR>
+xnoremap <C-j> :move '>+1<CR>gv-gv
+xnoremap <C-k> :move '<-2<CR>gv-gv
+inoremap <C-j> <Esc>:m .+1<CR>==gi
+inoremap <C-k> <Esc>:m .-2<CR>==gi
+noremap <C-j> :m .+1<CR>
+noremap <C-k> :m .-2<CR>
 " Mover palabra dentro de la línea
-inoremap <C-n> <esc>diwi<BS><esc>bhi <esc>phi
-inoremap <C-m> <esc>diwi<BS><esc>ea <esc>phi
-noremap <C-n> diwi<BS><esc>bhi <esc>ph
-noremap <C-m> diwi<BS><esc>ea <esc>ph
+inoremap <C-h> <esc>diwi<BS><esc>bhi <esc>phi
+inoremap <C-l> <esc>diwi<BS><esc>ea <esc>phi
+noremap <C-h> diwi<BS><esc>bhi <esc>ph
+noremap <C-l> diwi<BS><esc>ea <esc>ph
 
 " Movimiento de pantalla de a una línea
 noremap <C-r> <C-y>
@@ -142,11 +126,6 @@ noremap <C-v> <C-b>
 inoremap <C-c> <esc><C-f>a
 inoremap <C-v> <esc><C-b>a
 
-inoremap <C-h> <left>
-inoremap <C-j> <down>
-inoremap <C-k> <up>
-inoremap <C-l> <right>
-
 " Tabaular
 inoremap <C-,> <C-d>
 inoremap <C-.> <C-t>
@@ -155,12 +134,82 @@ nnoremap <C-.> >>
 xnoremap <C-,> <gv
 xnoremap <C-.> >gv
 
-" Normal: 1234567890-=qwtyuiop[]\aghjkl;'xb/
-" Insert: 1234567890-=qtyuop[]\ag;'xb/
+" Normal: 1234567890-=qwtyuiop[]\g;'bn/
+" Insert: 1234567890-=qtyuop[]\ag;'xbn/
+
+"------------------------------------------------------
+
+
+
+" ALTERNATIVE
+
+inoremap <A-n> 0
+inoremap <A-m> 1
+inoremap <A-,> 2
+inoremap <A-.> 3
+inoremap <A-j> 4
+inoremap <A-k> 5
+inoremap <A-l> 6
+inoremap <A-u> 7
+inoremap <A-i> 8
+inoremap <A-o> 9
+
+inoremap <A-z> <BS>
+noremap <A-z> X
+inoremap <A-x> <Delete>
+
+inoremap <A-f> <esc>ui
+noremap <A-f> u
+inoremap <A-r> <esc><C-r>i
+noremap <A-r> <C-r>
+inoremap <A-q> <esc>Bi
+inoremap <A-w> <esc>Wa
+inoremap <A-e> <esc>Ea
+noremap <A-q> B
+noremap <A-w> W
+noremap <A-e> E
+
+noremap <A-d> dd
+noremap <A-a> cc<esc>
+noremap <A-c> yy
+noremap <A-v> <C-q>
+inoremap <A-d> <esc>dda
+inoremap <A-a> <esc>cc
+inoremap <A-c> <esc>yya
+inoremap <A-v> <esc><C-q>
+
+" Normal: 1234890-=yuip[]\ghjkl;'xbn,./
+" Insert: 1234890-=yp[]\gh;'b/
+" lejos: 567t
+
+"------------------------------------------------------
 
 
 
 
+" LETERS
+
+" Movement
+" como chi o como no
+noremap J 12j
+noremap K 12k
+noremap H 12h
+noremap L 12l
+inoremap JJ <Esc>18j
+inoremap KK <Esc>18k
+inoremap HH <Esc>34h
+inoremap jj <Esc>j
+inoremap kk <Esc>k
+inoremap hh <Esc>h
+
+" La re mueven
+noremap zz G
+noremap zk zt
+noremap zj zb
+noremap zm zz
+" No la mueven (tampoco la M)
+noremap zh H
+noremap zl L
 
 " Search
 noremap n nzzzv
@@ -173,7 +222,6 @@ inoremap ff <esc>
 xnoremap ff <esc>
 tnoremap ff <C-\><C-n>
 tnoremap <esc> <C-\><C-n>
-
 
 " move between windows
 noremap q <nop>
@@ -189,41 +237,6 @@ inoremap qj <esc><C-w>j
 inoremap qk <esc><C-w>k
 inoremap qf <esc><C-w>w
 inoremap qq <esc><C-w>W
-
-
-inoremap <A-n> 0
-inoremap <A-m> 1
-inoremap <A-,> 2
-inoremap <A-.> 3
-inoremap <A-j> 4
-inoremap <A-k> 5
-inoremap <A-l> 6
-inoremap <A-u> 7
-inoremap <A-i> 8
-inoremap <A-o> 9
-
-inoremap <A-r> <BS>
-
-noremap <A-r> X
-noremap <A-e> i<CR><esc>
-
-noremap <A-d> dd
-noremap <A-s> p
-noremap <A-a> cc<esc>
-noremap <A-c> yy
-noremap <A-v> v
-inoremap <A-d> <esc>dda
-inoremap <A-s> <esc>pi
-inoremap <A-a> <esc>cc
-inoremap <A-c> <esc>yya
-inoremap <A-v> <esc>v
-
-" Alt
-" Normal: 1234890-=qweyuiop[]\fghjkl;'zxbnm,./
-" Insert: 1234890-=qweyp[]\fgh;'zxbnm,./
-" 567t
-
-
 
 " select
 noremap vs V
@@ -292,9 +305,10 @@ inoremap df <esc>ld$a
 inoremap dc <esc>d0i
 
 " Paste
-noremap s <nop>
-noremap sj p
-noremap sk P
+noremap s p
+noremap sd P
+noremap sc yyp
+noremap sv yyP
 noremap sl yyp
 noremap sh yyP
 noremap sx xp
@@ -303,20 +317,18 @@ inoremap sx <esc>xpi
 " Others
 nnoremap U <C-r>
 inoremap xx <Delete>
-inoremap xh <BS>
 noremap <CR> i<CR><esc>
 noremap <BS> a<BS><esc>
 noremap <TAB> :bnext<CR>
 noremap <S-TAB> :bprev<CR>
 noremap <space><TAB> :bprev<CR>
 
-
-
-
-
-
-
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
+
 " L A N G U A G E S
 
 " Python
@@ -346,14 +358,14 @@ inoremap kr true
 inoremap kf false
 inoremap kt ==
 
-" posibles letras de uso qf
-
-
-
-
-
+" posibles letras de uso qfx
 
 " * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+
+
+
+
 
 
 " S E M I C O L O N   L A Y E R
@@ -377,7 +389,7 @@ inoremap ;c {}<left>
 inoremap ;x {
 inoremap ;z }
 inoremap ;m <><left>
-inoremap ;g ''<left>
+inoremap ;j ''<left>
 inoremap ;u ""<left>
 
 noremap ;r i[]<esc>
@@ -395,15 +407,15 @@ noremap ;. 0i<<esc>$a><esc>
 noremap ;u i""<esc>
 noremap ;i bi"<esc>ea"<esc>
 noremap ;o 0i"<esc>$a"<esc>
-noremap ;g i''<esc>
-noremap ;v bi'<esc>ea'<esc>
-noremap ;b 0i'<esc>$a'<esc>
+noremap ;j i''<esc>
+noremap ;k bi'<esc>ea'<esc>
+noremap ;l 0i'<esc>$a'<esc>
 " command
 noremap ;p :put=range()<left>
 inoremap ;p <esc>:put=range()<left>
 
-inoremap ;t Tan sólo estando así yo veo mi elemento, veo en el silencio amor, veo mi elemento amor
-noremap ;t iTan sólo contigo así contigo yo veo mi elemento, veo en el silencio amor, veo mi elemento amor<esc>0
+inoremap ;t Tan sólo estando así contigo yo veo mi elemento, veo en el silencio amor, veo mi elemento amor
+noremap ;t iTan sólo estando así contigo yo veo mi elemento, veo en el silencio amor, veo mi elemento amor<esc>0
 noremap ;y yy46p
 noremap ;h yy16p
 noremap ;n yy06p
@@ -411,10 +423,13 @@ inoremap ;y <esc>yy46pi
 inoremap ;h <esc>yy16pi
 inoremap ;n <esc>yy06pi
 
-" Insert: b;'  (mapear ;jk  entorpecen en JS)
-" Normal: aq;'
+" Insert: gvb;'  (mapear ;jk  entorpecen en JS)
+" Normal: aqgvb;'
 
 " ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+
+
+
 
 "CO M M A   L A Y E R  command
 "q z x m in AutoHotKey
@@ -425,12 +440,8 @@ noremap ,, o<esc>
 inoremap ,, <esc>o
 noremap ,. O<esc>
 inoremap ,. <esc>O
-inoremap ,d <esc>ciw
-noremap ,d diw
-inoremap ,w <Esc>lwha
-inoremap ,e <Esc>ea
-inoremap ,b <Esc>bi
-inoremap ,u <Esc>ui
+inoremap ,d <esc>dawi
+noremap ,d daw
 inoremap ,f <Esc>$a
 noremap ,f $
 inoremap ,c <Esc>0j
@@ -446,8 +457,7 @@ inoremap ,r -
 inoremap ,m *
 inoremap ,t =
 inoremap ,g _
-inoremap ,p %
-inoremap ,a &
+inoremap ,n %
 inoremap ,o °
 inoremap ,` ~
 inoremap ,/ ¿
@@ -457,11 +467,15 @@ inoremap ,h <left>
 inoremap ,j <esc><down>a
 inoremap ,k <esc><up>a
 inoremap ,l <right>
+inoremap ,a <right>
 
-" Insert: ;'
+" Insert: wepb;'
 " Normal: ertpyuiahjklbnm WSGYVAHJKLNVBM 1457890-=
 
 " ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+
+
+
 
 " D O T    L A Y E R
 "(Normal only)
@@ -490,7 +504,11 @@ noremap .q :q<CR>
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-" in use AHK i o h j k l m , . (p)undefined
+
+
+
+
+" in use AHK  h j k l m , . (p)undefined
 " Normal: w y u x q s z 
 noremap <leader>e :! node %<CR>
 
