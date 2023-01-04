@@ -48,7 +48,12 @@ set updatetime=300
 set completeopt-=preview
 
 "============================================================
+
+
+
 " Plugins
+
+
 call plug#begin('~/AppData/Local/nvim-data/site/autoload')
 " Git
 Plug 'tpope/vim-fugitive'                            " Git assistant
@@ -178,7 +183,13 @@ inoremap <A-a> <esc>cc
 inoremap <A-c> <esc>yya
 inoremap <A-v> <esc><C-q>
 
-" Normal: 1234890-=yuip[]\ghjkl;'xbn,./
+
+noremap <A-j> 25j
+noremap <A-k> 25k
+noremap <A-h> 25h
+noremap <A-l> 25l
+
+" Normal: 1234890-=yuip[]\g;'xbn,./
 " Insert: 1234890-=yp[]\gh;'b/
 " lejos: 567t
 
@@ -186,15 +197,14 @@ inoremap <A-v> <esc><C-q>
 
 
 
-
 " LETERS
 
 " Movement
 " como chi o como no
-noremap J 12j
-noremap K 12k
-noremap H 12h
-noremap L 12l
+noremap J 10j
+noremap K 10k
+noremap H 10h
+noremap L 10l
 inoremap JJ <Esc>18j
 inoremap KK <Esc>18k
 inoremap HH <Esc>34h
@@ -216,13 +226,6 @@ noremap n nzzzv
 noremap N Nzzzv
 noremap <silent><space> :nohl<CR>
 
-" Out
-noremap ff a
-inoremap ff <esc>
-xnoremap ff <esc>
-tnoremap ff <C-\><C-n>
-tnoremap <esc> <C-\><C-n>
-
 " move between windows
 noremap q <nop>
 noremap qh <C-w>h
@@ -231,12 +234,20 @@ noremap qj <C-w>j
 noremap qk <C-w>k
 noremap qf <C-w>w
 noremap qq <C-w>W
+noremap fq <C-w>W
 inoremap qh <esc><C-w>h
 inoremap ql <esc><C-w>l
-inoremap qj <esc><C-w>j
 inoremap qk <esc><C-w>k
 inoremap qf <esc><C-w>w
 inoremap qq <esc><C-w>W
+inoremap fq <esc><C-w>W
+
+" Out
+noremap ff a
+inoremap ff <esc>
+xnoremap ff <esc>
+tnoremap ff <C-\><C-n>
+tnoremap <esc> <C-\><C-n>
 
 " select
 noremap vs V
@@ -270,6 +281,8 @@ xnoremap m t
 xnoremap a ggVG
 xnoremap g gg
 xnoremap z G
+xnoremap fc U
+xnoremap fv u
 
 " Copy
 noremap cs yy
@@ -424,7 +437,7 @@ inoremap ;h <esc>yy16pi
 inoremap ;n <esc>yy06pi
 
 " Insert: gvb;'  (mapear ;jk  entorpecen en JS)
-" Normal: aqgvb;'
+" Normal: gvb;'  (aq use in Ack Plug)
 
 " ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
@@ -717,8 +730,8 @@ autocmd  FileType fzf set laststatus=0 noshowmode noruler
 cnoreabbrev Ack Ack!
 let g:ackprg = "ag --vimgrep"
 let g:ackhighlight = 1
-" nnoremap <C-j> :cnext<CR>
-" nnoremap <C-k> :cprevious<CR>
+nnoremap ;a :cnext<CR>
+nnoremap ;q :cprevious<CR>
 nnoremap <Leader>cp :Ack! --py 
 nnoremap <Leader>ce :Ack! --py  E:/eproj/<left><left><left><left><left><left><left><left><left><left>
 nnoremap <Leader>cc :Ack! --py  C:/Users/DELL/cproj/<left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left>
