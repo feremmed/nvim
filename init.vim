@@ -118,9 +118,9 @@ noremap <C-h> diwi<BS><esc>bhi <esc>ph
 noremap <C-l> diwi<BS><esc>ea <esc>ph
 
 " Movimiento de pantalla de a una línea
-noremap <C-r> <C-y>
-inoremap <C-r> <esc><C-y>a
-inoremap <C-e> <esc><C-e>a
+" noremap <C-r> <C-y>
+" inoremap <C-r> <esc><C-y>a
+" inoremap <C-e> <esc><C-e>a
 " Movimiento de media pantalla
 noremap <C-f> <C-u>
 inoremap <C-d> <esc><C-d>a
@@ -139,8 +139,18 @@ nnoremap <C-.> >>
 xnoremap <C-,> <gv
 xnoremap <C-.> >gv
 
-" Normal: 1234567890-=qwtyuiop[]\g;'bn/
-" Insert: 1234567890-=qtyuop[]\ag;'xbn/
+inoremap <C-a> á
+inoremap <C-e> é
+inoremap <C-i> í
+inoremap <C-o> ó
+inoremap <C-u> ú
+inoremap <C-y> ü
+inoremap <C-n> ñ
+inoremap <C-q> ¡
+inoremap <C-/> ¿
+
+" Normal: 1234567890-=wtyuip[]\g;'bn/
+" Insert: 1234567890-=qtyp[]\ag;'xbn/
 
 "------------------------------------------------------
 
@@ -161,7 +171,7 @@ inoremap <A-o> 9
 
 inoremap <A-z> <BS>
 noremap <A-z> X
-inoremap <A-x> <Delete>
+inoremap <A-x> <CR>
 
 inoremap <A-f> <esc>ui
 noremap <A-f> u
@@ -174,15 +184,16 @@ noremap <A-q> B
 noremap <A-w> W
 noremap <A-e> E
 
-noremap <A-d> dd
 noremap <A-a> cc<esc>
+noremap <A-s> p
+noremap <A-d> dd
 noremap <A-c> yy
 noremap <A-v> <C-q>
-inoremap <A-d> <esc>dda
 inoremap <A-a> <esc>cc
+inoremap <A-s> <esc>p
+inoremap <A-d> <esc>dda
 inoremap <A-c> <esc>yya
 inoremap <A-v> <esc><C-q>
-
 
 noremap <A-j> 25j
 noremap <A-k> 25k
@@ -213,13 +224,12 @@ inoremap kk <Esc>k
 inoremap hh <Esc>h
 
 " La re mueven
-noremap zz G
-noremap zk zt
-noremap zj zb
-noremap zm zz
+noremap zd zt
+noremap zc zb
 " No la mueven (tampoco la M)
-noremap zh H
-noremap zl L
+noremap ze H
+noremap zf M
+noremap zv L
 
 " Search
 noremap n nzzzv
@@ -232,22 +242,47 @@ noremap qh <C-w>h
 noremap ql <C-w>l
 noremap qj <C-w>j
 noremap qk <C-w>k
-noremap qf <C-w>w
 noremap qq <C-w>W
-noremap fq <C-w>W
 inoremap qh <esc><C-w>h
 inoremap ql <esc><C-w>l
+inoremap qj <esc><C-w>j
 inoremap qk <esc><C-w>k
-inoremap qf <esc><C-w>w
 inoremap qq <esc><C-w>W
-inoremap fq <esc><C-w>W
+inoremap qf <Esc>$a
+inoremap qc <Esc>0j
+noremap qf $
+noremap qc 0
+
+" Normal: wertyasgzxvb  uiopnm,.[];'
+" Insert: wertyasgzxvb  uiopnm,.[];'
+
 
 " Out
-noremap ff a
+noremap ff i
 inoremap ff <esc>
 xnoremap ff <esc>
 tnoremap ff <C-\><C-n>
 tnoremap <esc> <C-\><C-n>
+
+
+noremap fc :
+noremap ft <C-w><C-x>
+noremap fq :q<CR>
+noremap fd :bdelete!<CR>
+noremap fa :enew<CR>
+noremap fs :source ~/AppData/Local/nvim/init.vim<CR>
+noremap fv :vsp<CR>
+noremap fz :exe "vertical resize " . (winwidth(0) * 5/4)<CR>
+noremap fx :exe "vertical resize " . (winwidth(0) * 4/5)<CR>
+noremap fr :sp<CR>
+noremap fe :exe " resize " . (winheight(0) * 3/2)<CR>
+noremap fw :exe " resize " . (winheight(0) * 2/3)<CR>
+noremap fg :w!<CR>
+inoremap fg <esc>:w!<CR>a
+
+" Normal: yuiop[]\hjkl;bnm,.
+" Insert: qwertasdfzxcv  yuiop[]hjkl;bnm,.
+
 
 " select
 noremap vs V
@@ -286,8 +321,8 @@ xnoremap fv u
 
 " Copy
 noremap cs yy
-noremap cj yj
-noremap ck ykj
+noremap cd yj
+noremap cx ykj
 noremap cl vy
 noremap cf y$
 noremap cc y0
@@ -299,7 +334,7 @@ noremap cm yt
 noremap cg ygg<C-o>
 noremap cz yG
 noremap ca ggVGy<C-o>
-inoremap cj <esc>yja
+inoremap cd <esc>yja
 
 " Cut
 noremap dd <nop>
@@ -318,14 +353,15 @@ inoremap df <esc>ld$a
 inoremap dc <esc>d0i
 
 " Paste
-noremap s p
-noremap sd P
+noremap s <nop>
+noremap sd p
 noremap sc yyp
 noremap sv yyP
 noremap sl yyp
 noremap sh yyP
 noremap sx xp
-inoremap sx <esc>xpi
+noremap sx <esc>xpi
+
 
 " Others
 nnoremap U <C-r>
@@ -351,18 +387,21 @@ inoremap mt type()<left>
 inoremap mr range()<left>
 inoremap mq append()<left>
 inoremap mh list()<left>
+inoremap mx <esc>$a:
 inoremap mz <esc>$a:<cr>
 inoremap mr True
 inoremap mf False
 "enumerate, int, it
+"
 " JS
 inoremap jc console.log()<left>
 inoremap jf function () {}<left><CR><CR><up><up><esc>ela
 inoremap jd () {}<left><CR><CR><up><up><esc>f(
 inoremap js {}<left><CR><CR><up>
-inoremap jx = [];<left><left>
+inoremap jq = [];<left><left>
 inoremap jw while () {}<left><CR><CR><up><up><esc>ela
-inoremap jz <esc>$a;
+inoremap jx <esc>$a;
+inoremap jz <esc>$a;<cr>
 inoremap jt ===
 inoremap jr return
 
@@ -378,68 +417,24 @@ inoremap kt ==
 
 
 
+" D O T    L A Y E R
+"(Normal only)
 
+noremap . <nop>
 
+noremap .i <C-w>=
+noremap .b :lclose<bar>b#<bar>bd #<CR>
 
-" S E M I C O L O N   L A Y E R
+noremap .u :set nowrap!<CR>
+noremap .n :set nu! rnu!<CR>
+noremap .h :set ww=<,>,h,l<CR>
+noremap .a :enew<CR>
+noremap .d :bdelete!<CR>
+noremap .s :source ~/AppData/Local/nvim/init.vim<CR>
 
-" whrite with semicolon layer
-inoremap ;1 ¡
-inoremap ;2 @
-inoremap ;3 #
-inoremap ;4 $
-inoremap ;5 %
-inoremap ;q !
-inoremap ;a &
+" Normal: 2345 qwertyopfgjklzxcvm;'/
 
-inoremap ;r []<left>
-inoremap ;e ]
-inoremap ;w [
-inoremap ;f ()<left>
-inoremap ;d )
-inoremap ;s (
-inoremap ;c {}<left>
-inoremap ;x {
-inoremap ;z }
-inoremap ;m <><left>
-inoremap ;j ''<left>
-inoremap ;u ""<left>
-
-noremap ;r i[]<esc>
-noremap ;e bi[<esc>ea]<esc>
-noremap ;w 0i[<esc>$a]<esc>
-noremap ;f i()<esc>
-noremap ;d bi(<esc>ea)<esc>
-noremap ;s 0i(<esc>$a)<esc>
-noremap ;c i{}<esc>
-noremap ;x bi{<esc>ea}<esc>
-noremap ;z 0i{<esc>$a}<esc>
-noremap ;m i<><esc>
-noremap ;, bi<<esc>ea><esc>
-noremap ;. 0i<<esc>$a><esc>
-noremap ;u i""<esc>
-noremap ;i bi"<esc>ea"<esc>
-noremap ;o 0i"<esc>$a"<esc>
-noremap ;j i''<esc>
-noremap ;k bi'<esc>ea'<esc>
-noremap ;l 0i'<esc>$a'<esc>
-" command
-noremap ;p :put=range()<left>
-inoremap ;p <esc>:put=range()<left>
-
-inoremap ;t Tan sólo estando así contigo yo veo mi elemento, veo en el silencio amor, veo mi elemento amor
-noremap ;t iTan sólo estando así contigo yo veo mi elemento, veo en el silencio amor, veo mi elemento amor<esc>0
-noremap ;y yy46p
-noremap ;h yy16p
-noremap ;n yy06p
-inoremap ;y <esc>yy46pi
-inoremap ;h <esc>yy16pi
-inoremap ;n <esc>yy06pi
-
-" Insert: gvb;'  (mapear ;jk  entorpecen en JS)
-" Normal: gvb;'  (aq use in Ack Plug)
-
-" ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 
@@ -448,7 +443,7 @@ inoremap ;n <esc>yy06pi
 "q z x m in AutoHotKey
 
 " Desde el archivo copia
-noremap ,ii ggjdG<C-w><C-w>ggVGy<C-o>zt<C-w><C-w>p:w!<CR>
+noremap ,iii ggjdG<C-w><C-w>ggVGy<C-o>zt<C-w><C-w>p:w!<CR>
 noremap ,, o<esc>
 inoremap ,, <esc>o
 noremap ,. O<esc>
@@ -490,39 +485,74 @@ inoremap ,a <right>
 
 
 
-" D O T    L A Y E R
-"(Normal only)
+" S E M I C O L O N   L A Y E R
 
-noremap . <nop>
-noremap .g :sav 
-noremap .e :e 
-noremap .z <C-w>=
-noremap .t <C-w><C-x>
-noremap .w :set nowrap!<CR>
-noremap .r :set nu! rnu!<CR>
-noremap .h :set ww=<,>,h,l<CR>
-noremap .a :enew<CR>
-noremap .f :vsp<CR>
-noremap .v :exe "vertical resize " . (winwidth(0) * 5/4)<CR>
-noremap .c :exe "vertical resize " . (winwidth(0) * 4/5)<CR>
-noremap .j :sp<CR>
-noremap .m :exe " resize " . (winheight(0) * 3/2)<CR>
-noremap .n :exe " resize " . (winheight(0) * 2/3)<CR>
-noremap .s :source ~/AppData/Local/nvim/init.vim<CR>
-noremap .d :bdelete!<CR>
-noremap .x :lclose<bar>b#<bar>bd #<CR>
-noremap .q :q<CR>
+" whrite with semicolon layer
+inoremap ;1 ¡
+inoremap ;2 @
+inoremap ;3 #
+inoremap ;4 $
+inoremap ;5 %
+inoremap ;q !
+inoremap ;a &
+inoremap ;i y
 
-" Normal: 2345 yuiopkl;'b/
+inoremap ;r []<left>
+inoremap ;e ]
+inoremap ;w [
+inoremap ;f ()<left>
+inoremap ;d )
+inoremap ;s (
+inoremap ;c {}<left>
+inoremap ;x {
+inoremap ;z }
+inoremap ;m <><left>
+inoremap ;g ''<left>
+inoremap ;u ""<left>
 
-" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+noremap ;r i[]<esc>
+noremap ;e bi[<esc>ea]<esc>
+noremap ;w 0i[<esc>$a]<esc>
+noremap ;f i()<esc>
+noremap ;d bi(<esc>ea)<esc>
+noremap ;s 0i(<esc>$a)<esc>
+noremap ;c i{}<esc>
+noremap ;x bi{<esc>ea}<esc>
+noremap ;z 0i{<esc>$a}<esc>
+noremap ;m i<><esc>
+noremap ;, bi<<esc>ea><esc>
+noremap ;. 0i<<esc>$a><esc>
+noremap ;u i""<esc>
+noremap ;i bi"<esc>ea"<esc>
+noremap ;o 0i"<esc>$a"<esc>
+noremap ;g i''<esc>
+noremap ;v bi'<esc>ea'<esc>
+noremap ;b 0i'<esc>$a'<esc>
+" command
+noremap ;p :put=range()<left>
+inoremap ;p <esc>:put=range()<left>
+
+inoremap ;t Tan sólo estando así contigo yo veo mi elemento, veo en el silencio amor, veo mi elemento amor
+noremap ;t iTan sólo estando así contigo yo veo mi elemento, veo en el silencio amor, veo mi elemento amor<esc>0
+noremap ;y yy46p
+noremap ;h yy16p
+noremap ;n yy06p
+inoremap ;y <esc>yy46pi
+inoremap ;h <esc>yy16pi
+inoremap ;n <esc>yy06pi
+
+" Insert: vblo;,.'  (mapear ;jk  entorpecen en JS)
+" Normal: jkl;'  (aq use in Ack Plug)
+
+" ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
 
 
 
 
-" in use AHK  h j k l m , . (p)undefined
-" Normal: w y u x q s z 
+
+" in use AHK  h j k l m z x, . (p)undefined
+" Normal: w y u q s
 noremap <leader>e :! node %<CR>
 
 " D I R E C T    A C C S E S S
@@ -537,6 +567,7 @@ noremap <leader>as :e ~/myDocs/Scripts.ahk<CR>
 noremap <leader>ag :e ~/myDocs/comaGral.md<CR>
 noremap <leader>af :e ~/Desktop<CR>
 noremap <leader>aj :e ~/cproj/JS<CR>
+noremap <leader>ap :e ~/cproj/Python<CR>
 
 " <leader> uiopvbm;'-=13456879 ||  + !%*QRTYUIOPSGZXCVBNM
 
